@@ -20,12 +20,13 @@ type Config struct {
 	vmwcommon.ToolsConfig    `mapstructure:",squash"`
 	vmwcommon.VMXConfig      `mapstructure:",squash"`
 
-	BootCommand    []string `mapstructure:"boot_command"`
-	FloppyFiles    []string `mapstructure:"floppy_files"`
-	RemoteType     string   `mapstructure:"remote_type"`
-	SkipCompaction bool     `mapstructure:"skip_compaction"`
-	SourcePath     string   `mapstructure:"source_path"`
-	VMName         string   `mapstructure:"vm_name"`
+	BootCommand        []string `mapstructure:"boot_command"`
+	FloppyFiles        []string `mapstructure:"floppy_files"`
+	HardDriveInterface string   `mapstructure:"hard_drive_interface"`
+	RemoteType         string   `mapstructure:"remote_type"`
+	SkipCompaction     bool     `mapstructure:"skip_compaction"`
+	SourcePath         string   `mapstructure:"source_path"`
+	VMName             string   `mapstructure:"vm_name"`
 
 	tpl *packer.ConfigTemplate
 }

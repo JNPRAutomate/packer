@@ -78,6 +78,10 @@ each category, the available options are alphabetized and described.
   is "/Applications/VMware Fusion.app" but this setting allows you to
   customize this.
 
+* `hard_drive_interface` (string) - The type of controller that the
+  hard drives are attached to, defaults to "sata". Valid options are
+  "ide" and "scsi".
+
 * `headless` (boolean) - Packer defaults to building VMware
   virtual machines by launching a GUI that shows the console of the
   machine being built. When this value is set to true, the machine will

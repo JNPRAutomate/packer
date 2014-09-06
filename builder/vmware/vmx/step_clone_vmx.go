@@ -37,7 +37,19 @@ func (s *StepCloneVMX) Run(state multistep.StateBag) multistep.StepAction {
 		return multistep.ActionHalt
 	}
 
-	diskName, ok := vmxData["scsi0:0.filename"]
+	if b.config.HardDriveInterface == "scsi" {
+		if diskName {
+			ok := vmxData["scsi0:0.filename"]
+		}
+	} else if b.config.HardDriveInterface == "ide" {
+		if diskName {
+			ok := vmxData["ide0:0.filename"]
+		}
+	} else {
+		errs = packer.MultiErrorAppend(
+			errs, errors.New("hard_drive_interface can only be ide or scsi"))
+	}
+
 	if !ok {
 		err := fmt.Errorf("Root disk filename could not be found!")
 		state.Put("error", err)
